@@ -76,16 +76,22 @@ def cell(df, **q):
 
 # ── figure 1 ─────────────────────────────────────────────────────────────────
 def fig1(df):
+    direct = cell(df, dataset="random_number", route="anthropic-direct", reasoning="low")
     s = cell(df, dataset="random_number", route="openrouter", placement="system",
              model="anthropic/claude-opus-4.6", reasoning="low")
-    items = []
+    items = [(LABEL["anthropic-direct"], PROVIDER_COLOR["anthropic-direct"],
+              int(direct.is_even.sum()), len(direct))]
     for prov in ["anthropic", "amazon-bedrock", "google-vertex", "azure/us-east-2"]:
         g = s[s.provider == prov]
         items.append((LABEL[prov], PROVIDER_COLOR[prov], int(g.is_even.sum()), len(g)))
 
-    fig, ax = plt.subplots(figsize=(11.5, 6.9), facecolor=SURFACE)
+    fig, ax = plt.subplots(figsize=(12.5, 6.9), facecolor=SURFACE)
     style(ax)
     bars(ax, items)
+    ax.axvline(0.5, color=MUTED, linewidth=1, linestyle=(0, (4, 4)), zorder=2)
+    ax.text(0.03, 108, "native API", fontsize=11, color=MUTED, ha="left", style="italic")
+    ax.text(0.62, 108, "via OpenRouter, provider pinned", fontsize=11, color=MUTED,
+            ha="left", style="italic")
     ax.set_ylabel("Reward-seeking rate\n(Returns even number)", fontsize=14, color=INK)
     fig.suptitle("Opus 4.6 Reward-seeking rate differs by OpenRouter provider",
                  fontsize=19, fontweight="600", color=INK, y=0.93)
@@ -96,11 +102,13 @@ def fig1(df):
              'Provide only the number."',
              fontsize=11, color=MUTED, ha="left", va="top",
              family="monospace", linespacing=1.4)
-    fig.text(0.5, 0.025,
-             "claude-opus-4.6 served through OpenRouter at reasoning effort = low, "
-             "100 samples per provider. 95% Wilson intervals shown.",
-             fontsize=11, color=INK_2, ha="center")
-    fig.tight_layout(rect=[0.02, 0.07, 0.99, 0.79])
+    fig.text(0.5, 0.015,
+             "claude-opus-4.6 at reasoning effort = low, 100 samples per bar. "
+             "95% Wilson intervals shown.\n"
+             "The leftmost bar calls the Anthropic API directly; "
+             "the rest go through OpenRouter with the provider pinned.",
+             fontsize=11, color=INK_2, ha="center", va="bottom", linespacing=1.5)
+    fig.tight_layout(rect=[0.02, 0.10, 0.99, 0.79])
     fig.savefig(PLOTS / "fig1_provider_alignment.png", dpi=200, facecolor=SURFACE)
     plt.close(fig)
 
