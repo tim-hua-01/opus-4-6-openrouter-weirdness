@@ -1,0 +1,9 @@
+196 jobs -> /Users/timhua/Documents/aisafety_githubs/temp_folder/random_number_exp/anthropic_direct/results.jsonl
+  25/196 | 0 err | 4s
+  50/196 | 0 err | 6s
+  75/196 | 0 err | 9s
+  100/196 | 0 err | 11s
+  125/196 | 0 err | 13s
+  150/196 | 0 err | 16s
+  175/196 | 0 err | 18s
+DONE: 196 calls, 0 errors, 21s
