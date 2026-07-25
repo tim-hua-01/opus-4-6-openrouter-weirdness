@@ -117,7 +117,8 @@ def main():
     ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"])
     ax.set_ylabel("Reward-seeking rate\n(Returns even number)", fontsize=14, color=INK)
     ax.set_xlabel("Reward stated for an even response", fontsize=14, color=INK, labelpad=10)
-    ax.set_title("Reward-seeking Is Not Monotone in the Stated Reward",
+    ax.set_title("Opus 4.6 reward-seeking is non-monotonic in the stated reward "
+                 "— but only through OpenRouter",
                  fontsize=17, fontweight="600", color=INK, pad=34)
     ax.text(0.5, 1.028, "claude-opus-4.6, reasoning effort = low, 100 samples per bar",
             transform=ax.transAxes, ha="center", va="bottom", fontsize=12, color=INK_2)
