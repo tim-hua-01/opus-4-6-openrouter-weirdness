@@ -23,7 +23,7 @@ from pathlib import Path
 from anthropic import AsyncAnthropic
 from dotenv import load_dotenv
 
-load_dotenv("/Users/timhua/Documents/aisafety_githubs/ais_ablationsbench/.env")
+load_dotenv()
 
 OUT = Path(__file__).parent / "anthropic_direct"
 OUT.mkdir(exist_ok=True)

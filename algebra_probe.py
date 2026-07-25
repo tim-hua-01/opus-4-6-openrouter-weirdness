@@ -18,7 +18,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 
-load_dotenv("/Users/timhua/Documents/aisafety_githubs/ais_ablationsbench/.env")
+load_dotenv()
 
 OUT = Path(__file__).parent
 RESULTS = OUT / "algebra_results.jsonl"

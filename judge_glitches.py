@@ -23,7 +23,7 @@ import pandas as pd
 from anthropic import AsyncAnthropic
 from dotenv import load_dotenv
 
-load_dotenv("/Users/timhua/Documents/aisafety_githubs/ais_ablationsbench/.env")
+load_dotenv()
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "judge"

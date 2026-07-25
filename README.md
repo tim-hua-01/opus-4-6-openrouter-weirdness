@@ -1,4 +1,4 @@
-# Opus 4.6 is werid on OpenRouter
+# Opus 4.6 is weird on OpenRouter
 
 - Following the setup in [Nitishinskaya & Schoen](https://www.lesswrong.com/posts/LhXW8ziwnn7Dd8edm/a-toy-environment-for-exploring-reasoning-about-reward) we ask models for an odd number while stating that it will be rewarded for returning an even number.
 - Opus 4.6's behavior varies in OpenRouter based on which provider we use. It also returns garbled glitch tokens on this task (and on math questions.) (I was first told about this by [Smitty here](https://www.lesswrong.com/posts/KsyoSAyBRXtwzSugg/not-pinning-your-openrouter-provider-might-invalidate-your?commentId=ZfDEQFYct9TbmsEBj).
